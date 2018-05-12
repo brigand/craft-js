@@ -1,5 +1,5 @@
 {
-  "name": "craft-js",
+  "name": "@brigand/craft-js",
   "version": "0.1.0",
   "description": "create javascript code programatically",
   "main": "lib/index.js",

@@ -3,10 +3,10 @@ craft-js aids in creating JavaScript source code programmatically.
 ## Install
 
 ```
-yarn add craft-js
+yarn add @brigand/craft-js
 
 # or
-npm install --save craft-js
+npm install --save @brigand/craft-js
 ```
 
 ## fromValue
@@ -15,7 +15,7 @@ Currently the only API available, `fromValue` allows you to convert a primitive
 JS value to either a babel AST node, or JS source code.
 
 ```js
-const { fromValue } = require('craft-js');
+const { fromValue } = require('@brigand/craft-js');
 
 const jsCode = fromValue({ x: 1, y: [2, 3] }).toJs();
 console.log(jsCode);
