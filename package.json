@@ -7,6 +7,12 @@
   "author": "Frankie Bagnardi <f.bagnardi@gmail.com>",
   "license": "MIT",
   "private": false,
+  "scripts": {
+    "build": "babel src --out-dir lib",
+    "lint": "eslint src",
+    "test": "jest",
+    "prepublish": "yarn test && yarn build"
+  },
   "dependencies": {
     "babel-core": "^6.26.3",
     "babel-generator": "^6.26.1",

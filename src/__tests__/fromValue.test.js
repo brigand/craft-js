@@ -1,19 +1,18 @@
 import fromValue from '../fromValue';
-import generate from 'babel-generator';
 
 it(`basic types`, () => {
-  expect(fromValue('foo')).toMatchObject({
+  expect(fromValue('foo').unwrap()).toMatchObject({
     type: 'StringLiteral',
     value: 'foo',
   });
-  expect(fromValue(123)).toMatchObject({
+  expect(fromValue(123).unwrap()).toMatchObject({
     type: 'NumericLiteral',
     value: 123,
   });
-  expect(fromValue(null)).toMatchObject({
+  expect(fromValue(null).unwrap()).toMatchObject({
     type: 'NullLiteral',
   });
-  expect(fromValue(undefined)).toMatchObject({
+  expect(fromValue(undefined).unwrap()).toMatchObject({
     type: 'Identifier',
     name: 'undefined',
   });
@@ -43,7 +42,7 @@ it(`objects generate properly`, () => {
   const expTok = tokenize(expSrc);
 
   // Get the same three values for the generated result
-  const genSrc = generate(fromValue(expValue)).code;
+  const genSrc = fromValue(expValue).toJs();
   const genTok = tokenize(genSrc);
   const genValue = eval(`(${genSrc})`);
 

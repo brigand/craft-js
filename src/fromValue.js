@@ -1,6 +1,7 @@
 import { types as t } from 'babel-core';
+import Thing from './Thing';
 
-function fromValue(value) {
+function valueToAstNode(value) {
   if (value === undefined) return t.identifier('undefined');
   if (value === null) return t.nullLiteral();
   if (typeof value === 'string') return t.stringLiteral(value);
@@ -8,14 +9,18 @@ function fromValue(value) {
   if (typeof value === 'boolean') return t.booleanLiteral(value);
 
   if (Array.isArray(value)) {
-    return t.arrayExpression(value.map((x) => fromValue(x)));
+    return t.arrayExpression(value.map((x) => valueToAstNode(x)));
   }
 
   return t.objectExpression(
     Object.entries(value).map(([k, v]) =>
-      t.objectProperty(t.identifier(k), fromValue(v)),
+      t.objectProperty(t.identifier(k), valueToAstNode(v)),
     ),
   );
+}
+
+function fromValue(value) {
+  return new Thing(valueToAstNode(value), ['AstNode']);
 }
 
 export default fromValue;
