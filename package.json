@@ -1,6 +1,6 @@
 {
   "name": "craft-js",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "create javascript code programatically",
   "main": "lib/index.js",
   "repository": "git@github.com:brigand/craft-js.git",
